@@ -1,0 +1,18 @@
+{
+  "neutral": 0,
+  "happy": 1,
+  "shocked": 2,
+  "smug": 3,
+  "crying": 4,
+  "angry": 5,
+  "suspicious": 6,
+  "peace_pose": 7,
+  "phone_pose": 8,
+  "blush": 9,
+  "meltdown": 10,
+  "pointing": 11,
+  "batman": 12,
+  "lip_bite": 13,
+  "hand_up": 14,
+  "pout": 15
+}

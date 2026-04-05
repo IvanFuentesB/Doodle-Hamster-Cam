@@ -1,0 +1,41 @@
+{
+  "pack_name": "user_sent_20260403",
+  "source_note": "Reaction pack adapted from the user-supplied references on April 3, 2026.",
+  "images": [
+    {
+      "label": "neutral",
+      "filename": "neutral.png",
+      "live_override": true
+    },
+    {
+      "label": "meltdown",
+      "filename": "meltdown.png",
+      "live_override": true
+    },
+    {
+      "label": "pointing",
+      "filename": "pointing.png",
+      "live_override": true
+    },
+    {
+      "label": "batman",
+      "filename": "batman.png",
+      "live_override": true
+    },
+    {
+      "label": "lip_bite",
+      "filename": "lip_bite.png",
+      "live_override": true
+    },
+    {
+      "label": "hand_up",
+      "filename": "hand_up.png",
+      "live_override": true
+    },
+    {
+      "label": "pout",
+      "filename": "pout.png",
+      "live_override": true
+    }
+  ]
+}

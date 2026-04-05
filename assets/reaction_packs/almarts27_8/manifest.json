@@ -1,0 +1,47 @@
+{
+  "pack_name": "almarts27_8",
+  "source_note": "Cropped from the user-provided hamster screenshot on April 3, 2026.",
+  "images": [
+    {
+      "label": "happy",
+      "filename": "happy.png",
+      "live_override": true
+    },
+    {
+      "label": "crying",
+      "filename": "crying.png",
+      "live_override": true
+    },
+    {
+      "label": "shocked",
+      "filename": "shocked.png",
+      "live_override": true
+    },
+    {
+      "label": "angry",
+      "filename": "angry.png",
+      "live_override": true
+    },
+    {
+      "label": "smug",
+      "filename": "smug.png",
+      "live_override": true
+    },
+    {
+      "label": "tongue_out",
+      "filename": "tongue_out.png",
+      "live_override": true
+    },
+    {
+      "label": "neutral",
+      "filename": "neutral.png",
+      "live_override": true
+    },
+    {
+      "label": "blush",
+      "filename": "blush.png",
+      "live_override": false,
+      "suggested_map_command": "python map_pose.py --image assets/reaction_packs/almarts27_8/blush.png"
+    }
+  ]
+}
