@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#2563eb"/></marker>
+    <linearGradient id="blueGrad" x1="0" x2="1"><stop offset="0" stop-color="#e0f2fe"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+    <linearGradient id="darkGrad" x1="0" x2="1"><stop offset="0" stop-color="#06192b"/><stop offset="1" stop-color="#0a2d45"/></linearGradient>
+    <filter id="soft"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.10"/></filter>
+    <style>
+      .title { font: 700 40px Inter, Segoe UI, Arial, sans-serif; fill:#0f172a; }
+      .subtitle { font: 400 19px Inter, Segoe UI, Arial, sans-serif; fill:#475569; }
+      .boxTitle { font: 700 22px Inter, Segoe UI, Arial, sans-serif; fill:#0f172a; }
+      .boxText { font: 400 16px Inter, Segoe UI, Arial, sans-serif; fill:#334155; }
+      .small { font: 600 13px ui-monospace, SFMono-Regular, Consolas, monospace; fill:#1d4ed8; }
+      .arrow { stroke:#2563eb; stroke-width:4; fill:none; marker-end:url(#arrow); }
+      .dash { stroke:#64748b; stroke-width:3; stroke-dasharray:10 8; fill:none; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="60" y="72" class="title">Doodle-Hamster-Cam Training + Asset Mapping</text>
+  <text x="60" y="106" class="subtitle">How custom reaction images become usable in the app</text>
+<rect x="70" y="190" width="180" height="145" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="94" y="232" class="boxTitle">Collect data</text>
+<text x="94" y="262" class="boxText">collect_data.py</text>
+<text x="94" y="287" class="boxText">labeled samples</text>
+<rect x="290" y="190" width="180" height="145" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="314" y="232" class="boxTitle">Class map</text>
+<text x="314" y="262" class="boxText">class_map.json</text>
+<text x="314" y="287" class="boxText">10 labels</text>
+<rect x="510" y="190" width="180" height="145" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="534" y="232" class="boxTitle">Augment</text>
+<text x="534" y="262" class="boxText">mirror scale</text>
+<text x="534" y="287" class="boxText">jitter</text>
+<rect x="730" y="190" width="180" height="145" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="754" y="232" class="boxTitle">Train MLP</text>
+<text x="754" y="262" class="boxText">PyTorch</text>
+<text x="754" y="287" class="boxText">best_model.pt</text>
+<rect x="950" y="190" width="180" height="145" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="974" y="232" class="boxTitle">Evaluate</text>
+<text x="974" y="262" class="boxText">precision/recall</text>
+<text x="974" y="287" class="boxText">confusion matrix</text>
+<rect x="1170" y="190" width="180" height="145" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="1194" y="232" class="boxTitle">Checkpoint</text>
+<text x="1194" y="262" class="boxText">live app</text>
+<text x="1194" y="287" class="boxText">auto mode</text>
+<path d="M250,260 C270,260 270,260 290,260" class="arrow"/>
+<path d="M470,260 C490,260 490,260 510,260" class="arrow"/>
+<path d="M690,260 C710,260 710,260 730,260" class="arrow"/>
+<path d="M910,260 C930,260 930,260 950,260" class="arrow"/>
+<path d="M1130,260 C1150,260 1150,260 1170,260" class="arrow"/>
+<rect x="260" y="500" width="360" height="130" rx="22" fill="#fff7ed" stroke="#fb923c" stroke-width="2.5" filter="url(#soft)"/>
+<text x="284" y="542" class="boxTitle">Custom reaction image</text>
+<text x="284" y="572" class="boxText">map_pose.py copies art into assets/custom</text>
+<text x="284" y="597" class="boxText">records samples while you imitate the pose</text>
+<rect x="760" y="500" width="360" height="130" rx="22" fill="#fff7ed" stroke="#fb923c" stroke-width="2.5" filter="url(#soft)"/>
+<text x="784" y="542" class="boxTitle">Live prototype matching</text>
+<text x="784" y="572" class="boxText">reaction works before full retrain</text>
+<text x="784" y="597" class="boxText">then improves through training</text>
+<path d="M620,565 C690,565 690,565 760,565" class="arrow"/>
+</svg>

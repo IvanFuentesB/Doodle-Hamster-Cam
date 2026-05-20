@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto"><path d="M0,0 L12,4 L0,8 Z" fill="#2563eb"/></marker>
+    <linearGradient id="blueGrad" x1="0" x2="1"><stop offset="0" stop-color="#e0f2fe"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+    <linearGradient id="darkGrad" x1="0" x2="1"><stop offset="0" stop-color="#06192b"/><stop offset="1" stop-color="#0a2d45"/></linearGradient>
+    <filter id="soft"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity="0.10"/></filter>
+    <style>
+      .title { font: 700 40px Inter, Segoe UI, Arial, sans-serif; fill:#0f172a; }
+      .subtitle { font: 400 19px Inter, Segoe UI, Arial, sans-serif; fill:#475569; }
+      .boxTitle { font: 700 22px Inter, Segoe UI, Arial, sans-serif; fill:#0f172a; }
+      .boxText { font: 400 16px Inter, Segoe UI, Arial, sans-serif; fill:#334155; }
+      .small { font: 600 13px ui-monospace, SFMono-Regular, Consolas, monospace; fill:#1d4ed8; }
+      .arrow { stroke:#2563eb; stroke-width:4; fill:none; marker-end:url(#arrow); }
+      .dash { stroke:#64748b; stroke-width:3; stroke-dasharray:10 8; fill:none; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="60" y="72" class="title">Doodle-Hamster-Cam Live Inference</text>
+  <text x="60" y="106" class="subtitle">Clean flow - expression-to-avatar, not face replacement</text>
+<rect x="70" y="220" width="180" height="150" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="94" y="262" class="boxTitle">Webcam frame</text>
+<text x="94" y="292" class="boxText">local CPU</text>
+<text x="94" y="317" class="boxText">camera frame</text>
+<rect x="270" y="220" width="180" height="150" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="294" y="262" class="boxTitle">MediaPipe Tasks</text>
+<text x="294" y="292" class="boxText">face + hands</text>
+<text x="294" y="317" class="boxText">landmarks</text>
+<rect x="485" y="220" width="180" height="150" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="509" y="262" class="boxTitle">Feature vector</text>
+<text x="509" y="292" class="boxText">1000 dims</text>
+<text x="509" y="317" class="boxText">normalized</text>
+<rect x="700" y="220" width="180" height="150" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="724" y="262" class="boxTitle">Classifier</text>
+<text x="724" y="292" class="boxText">rule fallback</text>
+<text x="724" y="317" class="boxText">PyTorch MLP</text>
+<rect x="915" y="220" width="180" height="150" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="939" y="262" class="boxTitle">Smoothing</text>
+<text x="939" y="292" class="boxText">reduce flicker</text>
+<text x="939" y="317" class="boxText">stable label</text>
+<rect x="1130" y="220" width="180" height="150" rx="22" fill="#f8fafc" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="1154" y="262" class="boxTitle">Reaction panel</text>
+<text x="1154" y="292" class="boxText">separate image</text>
+<text x="1154" y="317" class="boxText">not face edit</text>
+<path d="M250,295 C260,295 260,295 270,295" class="arrow"/>
+<path d="M450,295 C467,295 467,295 485,295" class="arrow"/>
+<path d="M665,295 C682,295 682,295 700,295" class="arrow"/>
+<path d="M880,295 C897,295 897,295 915,295" class="arrow"/>
+<path d="M1095,295 C1112,295 1112,295 1130,295" class="arrow"/>
+<rect x="470" y="500" width="460" height="120" rx="22" fill="#f0f9ff" stroke="#38bdf8" stroke-width="2.5" filter="url(#soft)"/>
+<text x="494" y="542" class="boxTitle">Ethical boundary</text>
+<text x="494" y="572" class="boxText">The webcam feed is not modified.</text>
+<text x="494" y="597" class="boxText">The app maps detected expression/pose to a separate hamster reaction image.</text>
+</svg>
