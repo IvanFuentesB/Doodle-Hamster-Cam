@@ -1,7 +1,7 @@
 # Doodle Hamster Cam
 
 <p align="center">
-  <img src="docs/assets/diagrams/doodle_live_inference_clean.svg" alt="Doodle Hamster Cam live inference clean diagram" width="100%" />
+  <img src="docs/assets/doodle/diagrams/doodle_live_inference_clean.svg" alt="Doodle Hamster Cam live inference clean diagram" width="100%" />
 </p>
 
 Doodle Hamster Cam is a local CPU-friendly webcam prototype that maps face and hand landmarks into a separate hamster reaction panel in real time. It uses MediaPipe Tasks for landmark tracking, a custom PyTorch MLP for learned classification, and a rule-based fallback so the prototype still works before a trained checkpoint exists.
@@ -23,7 +23,7 @@ This repo is an expression-to-avatar reaction prototype. It does not replace a f
 ## Training and mapping flow
 
 <p align="center">
-  <img src="docs/assets/diagrams/doodle_training_mapping_clean.svg" alt="Doodle Hamster Cam training and mapping clean diagram" width="100%" />
+  <img src="docs/assets/doodle/diagrams/doodle_training_mapping_clean.svg" alt="Doodle Hamster Cam training and mapping clean diagram" width="100%" />
 </p>
 
 ## Reaction examples
@@ -33,19 +33,19 @@ The repo already contains committed custom hamster reaction images, so the READM
 <table>
   <tr>
     <td width="25%" align="center" valign="top">
-      <img src="docs/assets/reactions/neutral.png" alt="Neutral hamster reaction" width="100%" /><br/>
+      <img src="docs/assets/doodle/reactions/neutral.png" alt="Neutral hamster reaction" width="100%" /><br/>
       <strong>Neutral</strong>
     </td>
     <td width="25%" align="center" valign="top">
-      <img src="docs/assets/reactions/happy.png" alt="Happy hamster reaction" width="100%" /><br/>
+      <img src="docs/assets/doodle/reactions/happy.png" alt="Happy hamster reaction" width="100%" /><br/>
       <strong>Happy</strong>
     </td>
     <td width="25%" align="center" valign="top">
-      <img src="docs/assets/reactions/shocked.png" alt="Shocked hamster reaction" width="100%" /><br/>
+      <img src="docs/assets/doodle/reactions/shocked.png" alt="Shocked hamster reaction" width="100%" /><br/>
       <strong>Shocked</strong>
     </td>
     <td width="25%" align="center" valign="top">
-      <img src="docs/assets/reactions/smug.png" alt="Smug hamster reaction" width="100%" /><br/>
+      <img src="docs/assets/doodle/reactions/smug.png" alt="Smug hamster reaction" width="100%" /><br/>
       <strong>Smug</strong>
     </td>
   </tr>
