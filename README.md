@@ -2,6 +2,24 @@
 
 Doodle Hamster Cam is a local CPU-friendly webcam prototype that turns your face and hand landmarks into hamster reaction images in real time. It uses MediaPipe Tasks for live face and hand landmark tracking, a custom PyTorch MLP for landmark-based classification, and a rule-based fallback so the app still works before you train anything.
 
+## Portfolio framing
+
+This repo is an expression-to-avatar reaction prototype. It does not replace a face in video. Instead, it estimates expression and hand-pose state from landmarks and maps that state to a separate hamster reaction panel.
+
+## System diagrams
+
+### Live inference pipeline
+
+![Doodle Hamster Cam live inference pipeline](https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_01_live_inference_pipeline.svg)
+
+### Training and data pipeline
+
+![Doodle Hamster Cam training pipeline](https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_02_training_pipeline.svg)
+
+### Asset mapping flow
+
+![Doodle Hamster Cam asset mapping flow](https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_03_asset_mapping_flow.svg)
+
 ## Why landmarks plus an MLP
 
 Raw image classification is heavier, harder to debug, and less data-efficient for this kind of expression toy. This project uses normalized face and hand landmarks as the main feature representation because they are:
