@@ -1,24 +1,41 @@
 # Doodle Hamster Cam
 
-Doodle Hamster Cam is a local CPU-friendly webcam prototype that turns your face and hand landmarks into hamster reaction images in real time. It uses MediaPipe Tasks for live face and hand landmark tracking, a custom PyTorch MLP for landmark-based classification, and a rule-based fallback so the app still works before you train anything.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_01_live_inference_pipeline.svg" alt="Doodle Hamster Cam live inference pipeline" width="100%" />
+</p>
+
+Doodle Hamster Cam is a local CPU-friendly webcam prototype that maps face and hand landmarks into a separate hamster reaction panel in real time. It uses MediaPipe Tasks for landmark tracking, a custom PyTorch MLP for learned classification, and a rule-based fallback so the prototype still works before a trained checkpoint exists.
 
 ## Portfolio framing
 
 This repo is an expression-to-avatar reaction prototype. It does not replace a face in video. Instead, it estimates expression and hand-pose state from landmarks and maps that state to a separate hamster reaction panel.
 
-## System diagrams
+## System at a glance
 
-### Live inference pipeline
+| Area | Details |
+| --- | --- |
+| Runtime | Local, CPU-friendly webcam app |
+| Inputs | MediaPipe face landmarks, hand landmarks, and blendshape-assisted rule signals |
+| Modes | `auto`, `rule`, `ml` |
+| UI | Webcam view, label, confidence, FPS, mode, and reaction panel |
+| Mapping flow | `map_pose.py` lets a custom reaction image work before a full retrain |
 
-![Doodle Hamster Cam live inference pipeline](https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_01_live_inference_pipeline.svg)
+## Visual overview
 
-### Training and data pipeline
-
-![Doodle Hamster Cam training pipeline](https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_02_training_pipeline.svg)
-
-### Asset mapping flow
-
-![Doodle Hamster Cam asset mapping flow](https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_03_asset_mapping_flow.svg)
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_02_training_pipeline.svg" alt="Doodle Hamster Cam training pipeline" width="100%" /><br/>
+      <strong>Training and data pipeline</strong><br/>
+      Landmark samples move through collection, augmentation, training, checkpointing, and evaluation.
+    </td>
+    <td width="50%" valign="top">
+      <img src="https://raw.githubusercontent.com/IvanFuentesB/delete/main/assets/case-studies/diagrams/svg/doodle_03_asset_mapping_flow.svg" alt="Doodle Hamster Cam asset mapping flow" width="100%" /><br/>
+      <strong>Custom reaction mapping</strong><br/>
+      New reaction art can be paired to a pose through captured samples before full model retraining.
+    </td>
+  </tr>
+</table>
 
 ## Why landmarks plus an MLP
 
@@ -31,21 +48,46 @@ Raw image classification is heavier, harder to debug, and less data-efficient fo
 
 For expression quality, the live fallback path also reads MediaPipe face blendshape scores when they are available. The v1 model still trains on the fixed landmark vector, but the code is already structured so blendshapes can be added to the learned feature set later.
 
-## Features
+## Current capabilities
 
 - Live webcam app with webcam view, label, confidence, FPS, mode, and hamster reaction panel
 - MediaPipe Face Landmarker + Hand Landmarker using the current Tasks API
-- Shared 1000-dim feature pipeline:
-  - face `478 x/y`
-  - left hand `21 x/y`
-  - right hand `21 x/y`
-  - two hand-presence mask values
 - Rule-based fallback that uses landmarks and face blendshapes
-- Prototype pose matching from your saved samples, so mapped reactions can start working before a full retrain
-- Dataset collection tool with hotkeys and burst capture
-- Training script for a configurable PyTorch MLP
-- Evaluation script with per-class metrics and a text confusion matrix
+- Prototype pose matching from saved samples, so mapped reactions can start working before a full retrain
+- Dataset collection, training, evaluation, and custom reaction mapping scripts
 - Placeholder hamster assets generated automatically if missing
+
+## Quick start
+
+Use Python 3.10+.
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
+```
+
+Useful options:
+
+```bash
+python main.py --mode auto
+python main.py --mode rule
+python main.py --mode ml --checkpoint checkpoints/best_model.pt
+python main.py --camera-index 1 --no-selfie
+```
+
+Hotkeys in the live app:
+
+- `q`: quit
+- `m`: toggle ML / rule mode
+- `s`: save a screenshot to `captures/`
+- `r`: reset the smoothing buffer
+
+<details>
+<summary><strong>Developer guide</strong> — layout, data collection, training, evaluation, and custom reactions</summary>
+
+<br/>
 
 ## Project layout
 
@@ -81,53 +123,14 @@ doodle-hamster-cam/
 - `evaluate.py`: loads the saved checkpoint and reports validation accuracy, per-class metrics, and a confusion matrix.
 - `model.py`: defines the configurable MLP and checkpoint save/load helpers.
 - `utils/mediapipe_utils.py`: wraps MediaPipe Tasks setup, model download, detection calls, and landmark drawing.
-- `utils/feature_utils.py`: owns the canonical 1000-dim feature format, normalization, blendshape extraction, and rule-based scoring.
+- `utils/feature_utils.py`: owns the canonical landmark feature format, normalization, blendshape extraction, and rule-based scoring.
 - `utils/augment.py`: applies mirror, scale, and jitter augmentation to landmark features during training.
 - `utils/smoothing.py`: smooths framewise predictions to reduce flicker in the live app.
 - `utils/display.py`: renders the webcam/hamster layout, creates placeholder hamster reaction assets, and saves screenshots.
 
 ## Install
 
-Use Python 3.10+.
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-```
-
 If you do not pass model paths yourself, the app will download the official MediaPipe `.task` bundles into `models/` the first time you run it.
-
-## Run the live app
-
-```bash
-python main.py
-```
-
-Useful options:
-
-```bash
-python main.py --mode auto
-python main.py --mode rule
-python main.py --mode ml --checkpoint checkpoints/best_model.pt
-python main.py --camera-index 1 --no-selfie
-```
-
-Hotkeys in the live app:
-
-- `q`: quit
-- `m`: toggle ML / rule mode
-- `s`: save a screenshot to `captures/`
-- `r`: reset the smoothing buffer
-
-Behavior notes:
-
-- If no checkpoint exists, the app stays in rule mode.
-- If no face is visible, the neutral hamster is the safe default.
-- If hamster images are missing, placeholder doodle PNGs are generated automatically in `assets/`.
-- The default generated hamster art now follows a loose doodle-meme silhouette so you can swap in better manual assets later without changing code.
-- If you want your own reaction pack, put files in `assets/custom/` named `neutral.png`, `happy.png`, `shocked.png`, and so on. The app prefers `assets/custom/<label>.png|jpg|jpeg|webp` over the generated placeholders.
-- If you add more mapped reactions later, the live app can use their saved samples as prototype matches even before you retrain the MLP.
 
 ## Collect data
 
@@ -236,3 +239,5 @@ If you do not add art yet, the app will generate placeholder hamster assets auto
 
 - MediaPipe Tasks is still a preview-style API surface, so the code is written to fail fast on incompatible checkpoint or feature-spec mismatches.
 - The current model is designed for CPU inference and a local portfolio-friendly prototype, not a large production dataset.
+
+</details>
